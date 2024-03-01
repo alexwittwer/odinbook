@@ -1,17 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const facebookTokenStrategy = require("../../strategies/facebookToken");
-
+// const facebookTokenStrategy = require("../../strategies/facebookToken");
 const { check, body, validationResult } = require("express-validator");
-
 const User = require("../../models/user");
-
-const setupTestDrive = require("./setupTestDrive");
-
-//probs remove
 const passport = require("passport");
-passport.use(facebookTokenStrategy);
+// passport.use(facebookTokenStrategy);
 
 const {
   issueJWT,
@@ -19,7 +13,7 @@ const {
   validatePassword,
 } = require("../../utils/utils");
 
-router.post(
+/* router.post(
   "/facebook/token",
   passport.authenticate("facebook-token"),
   (req, res) => {
@@ -35,7 +29,7 @@ router.post(
       },
     });
   }
-);
+); */
 
 // POST sign up
 router.post(

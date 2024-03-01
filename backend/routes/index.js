@@ -3,10 +3,10 @@ const router = express.Router();
 
 const passport = require("passport");
 const jwtStrategy = require("../strategies/jwt");
-const facebookTokenStrategy = require("../strategies/facebookToken");
+// const facebookTokenStrategy = require("../strategies/facebookToken");
 
 passport.use(jwtStrategy);
-passport.use(facebookTokenStrategy);
+// passport.use(facebookTokenStrategy);
 
 const authRouter = require("./auth/auth");
 const postsRouter = require("./posts/posts");

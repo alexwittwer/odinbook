@@ -8,6 +8,7 @@ const passport = require("passport");
 const path = require("path");
 const compression = require("compression");
 const helmet = require("helmet");
+const multer = require("multer");
 
 // Load environment variables
 require("dotenv").config();

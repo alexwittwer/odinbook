@@ -1,4 +1,4 @@
-const passport = require("passport");
+/* const passport = require("passport");
 const FacebookTokenStrategy = require("passport-facebook-token");
 
 const User = require("../models/user");
@@ -35,4 +35,4 @@ passport.deserializeUser(function (id, done) {
   User.findById(id, function (err, user) {
     done(err, user);
   });
-});
+}); */
