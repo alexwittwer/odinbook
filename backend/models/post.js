@@ -1,20 +1,19 @@
 const mongoose = require("mongoose");
-const { format } = require("date-fns");
+const User = require("../models/user");
+const Comment = require("../models/comment");
 
-const Schema = mongoose.Schema;
-
-const PostSchema = new Schema({
-  author: { type: Schema.Types.ObjectId, ref: "User" },
-  content: { type: String, required: true },
-  timestamp: { type: Date, required: true },
-  comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
-  imgUrl: { type: String, required: false },
-  likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+const PostSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  text: { type: String, required: true },
+  likes: [{type: Number}],
+  date: { type: Date, default: Date.now },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
-PostSchema.virtual("formatted_time").get(function () {
-  return format(new Date(this.timestamp), "dd MMMM yyyy ' at ' HH:mm");
-});
-
-//Export model
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Posts", PostSchema);
