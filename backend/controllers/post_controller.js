@@ -60,20 +60,10 @@ exports.post_get_single = asyncHandler(async (req, res) => {
 
 exports.post_create = [
   passport.authenticate("jwt", { session: false }),
-  body("title")
-    .trim()
-    .isLength({ min: 6 })
-    .withMessage("Titles must be 6 characters minimum")
-    .escape(),
   body("text")
     .trim()
-    .isLength({ min: 300 })
-    .withMessage("Content must be a minimum of 300 characters"),
-  body("lede")
-    .trim()
-    .isLength({ max: 100 })
-    .withMessage("Lede must be under 100 characters")
-    .escape(),
+    .isLength({ max: 300 })
+    .withMessage("Content must be a maximum of 300 characters"),
 
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
@@ -84,10 +74,8 @@ exports.post_create = [
 
     try {
       const newPost = new Post({
-        title: req.body.title,
         user: req.user.user.userid,
         text: req.body.text,
-        lede: req.body.lede,
       });
 
       const user = await User.findById(req.user.user.userid);
@@ -104,15 +92,10 @@ exports.post_create = [
 
 exports.post_patch = [
   passport.authenticate("jwt", { session: false }),
-  body("title")
-    .trim()
-    .isLength({ min: 6 })
-    .withMessage("Titles must be 6 characters minimum")
-    .escape(),
   body("text")
     .trim()
-    .isLength({ min: 150 })
-    .withMessage("Content must be a minimum of 150 characters")
+    .isLength({ max: 150 })
+    .withMessage("Content must be a maximum of 300 characters")
     .escape(),
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
@@ -133,9 +116,7 @@ exports.post_patch = [
         return res.sendStatus(403);
       }
 
-      post.title = req.body.title || post.title;
       post.text = req.body.text || post.text;
-      post.lede = req.body.lede || post.lede;
 
       await post.save();
       return res.status(200).json({ message: "Post updated" });

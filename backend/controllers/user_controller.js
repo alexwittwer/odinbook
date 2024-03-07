@@ -46,8 +46,6 @@ exports.user_get_single = asyncHandler(async (req, res) => {
 });
 
 exports.user_create = [
-  body("name").trim().notEmpty().withMessage("Please enter a name").escape(),
-  body("bio").trim().escape(),
   body("email")
     .escape()
     .notEmpty()
@@ -71,8 +69,8 @@ exports.user_create = [
       }
 
       const newuser = new User({
-        name: req.body.name,
-        bio: req.body.bio,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         email: req.body.email,
       });
 
