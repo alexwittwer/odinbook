@@ -2,13 +2,10 @@ const mongoose = require('mongoose');
 
 const PhotoSchema = new mongoose.Schema({
     filename: String,
-    contentType: String,
-    length: Number,
-    chunkSize: Number,
+    path: String,
     uploadDate: Date,
-    aliases: [String],
 });
 
 const PhotoData = mongoose.model('PhotoData', PhotoSchema);
 
-module.exports = { Photo, PhotoData };
+module.exports = { PhotoData };
