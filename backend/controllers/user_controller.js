@@ -14,7 +14,7 @@ exports.user_get_all = asyncHandler(async (req, res) => {
       return res.status(200).json(allUsers);
     }
 
-    return res.sendStatus(404);
+    return res.sendStatus(418);
   } catch (err) {
     console.error(err);
     return res.sendStatus(500);

@@ -9,15 +9,15 @@ const authRoute = require("./routes/auth");
 const userRoute = require('./routes/users');
 const commentRoute = require('./routes/comments');
 const postRoute = require('./routes/posts');
-
 require("dotenv").config();
 require("./utils/mongoConfig");
 
 const app = express();
 
+
 // Middleware
 app.use(passport.initialize());
-app.use(helmet());
+//app.use(helmet());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use(logger("dev"));
@@ -30,7 +30,6 @@ app.use("/api/posts", postRoute);
 app.use("/api/comments", commentRoute);
 
 // Start server
-
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
