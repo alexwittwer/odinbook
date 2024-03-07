@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 const passport = require("passport");
-const jwtStrategy = require("../config/jwt");
+const jwtStrategy = require("../strategies/jwt");
 passport.use(jwtStrategy);
 
 exports.login = asyncHandler(async (req, res) => {
