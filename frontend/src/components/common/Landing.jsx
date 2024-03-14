@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 import { UserContext } from "../App"
 
 export default function Landing() {

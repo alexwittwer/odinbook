@@ -1,7 +1,7 @@
 export default function ErrorPage() {
   return (
-    <main>
-      <p>Error 404</p>
+    <main className="flex items-center justify-center h-screen">
+      <p className="text-6xl">404 Not Found</p>
     </main>
   )
 }
