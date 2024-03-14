@@ -6,10 +6,10 @@ const passport = require("passport");
 const path = require("path");
 const helmet = require("helmet");
 const authRoute = require("./routes/auth");
-const userRoute = require('./routes/users');
-const commentRoute = require('./routes/comments');
-const postRoute = require('./routes/posts');
-const uploadRouter = require("./routes/uploads")
+const userRoute = require("./routes/users");
+const commentRoute = require("./routes/comments");
+const postRoute = require("./routes/posts");
+const uploadRouter = require("./routes/uploads");
 require("dotenv").config();
 require("./utils/mongoConfig");
 
@@ -23,6 +23,7 @@ app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(helmet());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/login", authRoute);
