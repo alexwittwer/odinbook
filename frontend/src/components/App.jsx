@@ -28,7 +28,7 @@ function App() {
         <Header />
         <div className=' flex h-full'>
           <SideBar />
-        {url.pathname === "/" ? <Landing /> : <Outlet />}
+          {url.pathname === "/" ? <Landing /> : <Outlet />}
         </div>
       </main>
     </UserContext.Provider>

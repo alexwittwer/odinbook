@@ -9,7 +9,8 @@ export default function Header() {
             <nav className=" flex items-end justify-end gap-5 px-5 text-xl">
                 <Link to={"/home"}>Home</Link>
                 {user && <>
-                    <Link to={``}>Profile</Link>
+                    <Link to={"/messages"}>Messages</Link>
+                    <Link to={`/${user.userid}`}>Profile</Link>
                     <Link to={"/settings"}>Settings</Link>
                 </>}
                 {!user && <>
